@@ -40,38 +40,32 @@ int Output(float avgval) {
     d = 0;
     tone(8,NOTE_C4,250);
     delay(300);
-    noTone(8);
   }
   else if (avgval >= noise && avgval <= 2.3) {
     d = 1;
     tone(8,NOTE_D4,250);
     delay(300);
-    noTone(8);
   }
   else if (avgval <= 2.4 && avgval > 2.3) {
     d = 2;
     tone(8,NOTE_E4,250);
     delay(300);
-    noTone(8);
   }
   else if (avgval <= 2.5 && avgval > 2.4) {
     tone(8,NOTE_F4,250);
     delay(300);
-    noTone(8);
   }
   else {
     tone(8,NOTE_C4,250);
     delay(300);
-    noTone(8);
   }
   return d;
 }
 
 void loop() {
   float noise,avgval;
-  int z;
   avgval = FindAverageOfMax(ReadInput());
-  z = Output(avgval);
+  d = Output(avgval);
   for (int  k= 0; k < 500; k++) {  // This loop is mainly used for the analysis and debugging of the system through the serial port. 
     Serial.print(z);
     Serial.println();
